@@ -3,9 +3,13 @@ import styled from 'styled-components'
 import logo from '../../assets/logo.png'
 
 const StyledLeftComponent = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 40%;
     height: 100vh;
     background-color: #241f21;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,40 +26,48 @@ const Logo = styled.img`
 
 const MainHeading = styled.h1`
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
     color: #fff;
     margin-bottom: 0.75rem;
+
+    span{
+        font-weight: 700;
+    }
 `
 const SubHeading = styled.div`
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: #fff;
-    margin-bottom: 1rem;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
 `
 
 const AddPlayground = styled.button`
-    padding: 0.75rem 1.75rem;
-    font-size: 1.25rem;
+    padding: 0.25rem 1.5rem;
+    font-size: 1rem;
     border-radius: 30px;
-    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
     span{
-        font-size: 1.45rem;
+        font-size: 2rem;
         font-weight: 700;
     }
+
     &:hover{
         cursor: pointer;
     }
 `
 const LeftComponent = () => {
-  return (
-    <StyledLeftComponent>
-        <ContentContainer>
-            <Logo src={logo} alt="" />
-            <MainHeading>Code Deck</MainHeading>
-            <SubHeading>Code. Compile. Develop.</SubHeading>
-            <AddPlayground> <span>+</span> Create PlayGround</AddPlayground>
-        </ContentContainer>
-    </StyledLeftComponent>
-  )
+    return (
+        <StyledLeftComponent>
+            <ContentContainer>
+                <Logo src={logo} alt="" />
+                <MainHeading> <span>Code</span> Deck</MainHeading>
+                <SubHeading>Code. Compile. Develop.</SubHeading>
+                <AddPlayground><span>+</span> Create New Playground</AddPlayground>
+            </ContentContainer>
+        </StyledLeftComponent>
+    )
 }
 
 export default LeftComponent
