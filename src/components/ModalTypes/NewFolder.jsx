@@ -1,17 +1,28 @@
-import React, {useContext}from 'react'
-import { Header, Heading } from '../Modal'
-import {IoCloseSharp} from 'react-icons/io5'
+import React, { useContext, useState } from 'react'
+import { Header, CloseButton, Input } from '../Modal'
+import { IoCloseSharp } from 'react-icons/io5'
 import { ModalContext } from '../../context/ModalContext'
+import { PlaygroundContext } from '../../context/PlaygroundContext'
 const NewFolder = () => {
-  const {setIsOpenModal} = useContext(ModalContext);
+  const { closeModal } = useContext(ModalContext);
+  const { addFolder } = useContext(PlaygroundContext)
+  const [folderTitle, setFolderTitle] = useState("");
+
   return (
     <>
       <Header>
-        <Heading>Create New Folder</Heading>
-        <IoCloseSharp onClick={() => setIsOpenModal(false)}/>
+        <h2>Create New Folder</h2>
+        <CloseButton onClick={() => closeModal()}>
+          <IoCloseSharp />
+        </CloseButton>
       </Header>
-      <p>Enter Folder Name: <input type="text" /></p>
-      <button>Create New Folder</button>
+      <Input>
+        <input type="text" onChange={(e) => setFolderTitle(e.target.value)} />
+        <button onClick={() => {
+          addFolder(folderTitle)
+          closeModal()
+        }}>Create Folder</button>
+      </Input>
     </>
   )
 }

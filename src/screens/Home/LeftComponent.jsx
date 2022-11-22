@@ -1,7 +1,8 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import logo from '../../assets/logo.png'
 import { ModalContext } from '../../context/ModalContext'
+
 const StyledLeftComponent = styled.div`
     position: fixed;
     top: 0;
@@ -40,7 +41,7 @@ const SubHeading = styled.div`
     margin-bottom: 1.5rem;
 `
 
-const AddPlayground = styled.button`
+const AddNewButton = styled.button`
     padding: 0.25rem 1.5rem;
     font-size: 1rem;
     border-radius: 30px;
@@ -57,14 +58,21 @@ const AddPlayground = styled.button`
     }
 `
 const LeftComponent = () => {
-    const {setModal} = useContext(ModalContext);
+    const { openModal } = useContext(ModalContext);
     return (
         <StyledLeftComponent>
             <ContentContainer>
                 <Logo src={logo} alt="" />
                 <MainHeading> <span>Code</span> Deck</MainHeading>
-                <SubHeading>Code. Compile. Develop.</SubHeading>
-                <AddPlayground onClick={() => setModal(true, 3)} ><span>+</span> Create New Playground</AddPlayground>
+                <SubHeading>Code. Compile. Debug.</SubHeading>
+                <AddNewButton onClick={() => openModal({
+                    show: true,
+                    modalType: 3,
+                    identifiers: {
+                        folderId: "",
+                        cardId: "",
+                    }
+                })} ><span>+</span> Create New Playground</AddNewButton>
             </ContentContainer>
         </StyledLeftComponent>
     )
