@@ -2,19 +2,28 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import logo from '../../assets/code.png'
 import { ModalContext } from '../../context/ModalContext'
+import { motion } from 'framer-motion';
 
 const StyledLeftComponent = styled.div`
+box-sizing: border-box;
     position: fixed;
     top: 0;
     left: 0;
     width: 40%;
     height: 100vh;
-    background-color: #241f21;
+    background: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url('https://images4.alphacoders.com/114/1143395.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    
 `
+// background-color: #241f21;
+
 const ContentContainer = styled.div`
     text-align: center;
 `
@@ -48,6 +57,7 @@ const AddNewButton = styled.button`
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    transition: transform 0.5s;
     span{
         font-size: 2rem;
         font-weight: 700;
@@ -55,6 +65,9 @@ const AddNewButton = styled.button`
 
     &:hover{
         cursor: pointer;
+        box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+        transform: scale(1.1);
+        transition: transform 0.5s;
     }
 `
 const LeftComponent = () => {
@@ -62,7 +75,9 @@ const LeftComponent = () => {
     return (
         <StyledLeftComponent>
             <ContentContainer>
-                <Logo src={logo} alt="" />
+                <motion.div initial={{ y: -10 }} animate={{ y: 10 }} transition={{ type: 'smooth', repeatType: 'mirror', duration: 2, repeat: Infinity }}>
+                    <Logo Logo src={logo} alt=""/>
+                </motion.div>
                 <MainHeading> <span>Hacker</span> Code</MainHeading>
                 <SubHeading>Code. Compile. Debug.</SubHeading>
                 <AddNewButton onClick={() => openModal({
