@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/code.png'
 import { useNavigate } from 'react-router-dom'
 const NavbarContainer = styled.div`
   height: 4.5rem;
@@ -43,7 +43,7 @@ const Navbar = () => {
       }}>
         <Logo src={logo} />
         <MainHeading>
-          <span>Code</span> Deck
+          <span>Hacker</span> Code
         </MainHeading>
       </NavbarContent>
     </NavbarContainer>
