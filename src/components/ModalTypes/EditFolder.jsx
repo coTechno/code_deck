@@ -24,7 +24,8 @@ const EditFolder = () => {
         <button onClick={() => {
           editFolderTitle(folderId, folderTitle)
           closeModal()
-        }} style={{borderRadius: '5px', cursor: 'pointer'}} >Update Title</button>
+        }} style={{borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#4158D0', backgroundImage: 'linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(175 106 170) 50%, rgb(200 80 192) 100%)',
+        color: '#fff'}} >Update Title</button>
       </Input>
     </>
   )
