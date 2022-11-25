@@ -72,6 +72,7 @@ const Card = styled.div`
     justify-content: space-between;
     border-radius: 8px;
     box-shadow: 0 0 4px 0px #989898;
+    cursor: pointer;
 `
 
 const CardContainer = styled.div`

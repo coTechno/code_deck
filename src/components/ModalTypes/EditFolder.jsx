@@ -20,11 +20,11 @@ const EditFolder = () => {
         </CloseButton>
       </Header>
       <Input>
-        <input type="text" onChange={(e) => setFolderTitle(e.target.value)} />
+        <input type="text" style={{borderRadius: '5px', padding: '0px 10px'}} onChange={(e) => setFolderTitle(e.target.value)} />
         <button onClick={() => {
           editFolderTitle(folderId, folderTitle)
           closeModal()
-        }} >Update Title</button>
+        }} style={{borderRadius: '5px', cursor: 'pointer'}} >Update Title</button>
       </Input>
     </>
   )

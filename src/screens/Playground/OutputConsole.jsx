@@ -6,7 +6,7 @@ const OutputConsole = ({ currentOutput }) => {
   return (
     <Console>
       <Header>
-        Output:
+        Output :
       </Header>
       <TextArea
         value={currentOutput}

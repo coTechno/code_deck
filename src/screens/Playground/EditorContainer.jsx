@@ -12,7 +12,8 @@ const StyledEditorContainer = styled.div`
 `
 
 const UpperToolBar = styled.div`
-  background: #fff;
+background: #111422;
+color: #a3a7bc;
   height: 4rem;
 
   display: flex;
@@ -25,8 +26,12 @@ const Title = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-
   font-size: 1.3rem;
+
+  & > h3{
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `
 
 const SelectBars = styled.div`
@@ -39,14 +44,31 @@ const SelectBars = styled.div`
   }
 `
 const Button = styled.button`
-  padding: 0.6rem 1rem;
-  background: #0097d7;
-  border: none;
-  border-radius: 32px;
+  padding: 0.6rem 1.5rem;
   font-weight: 700;
   cursor: pointer;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
 `
 const LowerToolBar = styled.div`
+background: #111422;
+    color: #a3a7bc;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -150,7 +172,7 @@ const EditorContainer = ({
       <UpperToolBar>
         <Title>
           <h3>{title}</h3>
-          <BiEditAlt onClick={() => openModal({
+          <BiEditAlt style={{cursor: 'pointer'}} onClick={() => openModal({
             show: true,
             modalType: 5,
             identifiers: {

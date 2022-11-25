@@ -8,7 +8,8 @@ export const Console = styled.div`
 `
 
 export const Header = styled.div`
-  background: #ededed;
+  background: #111422;
+  color: #fff;
   height: 4rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
   padding: 0 1rem;
@@ -27,12 +28,14 @@ export const TextArea = styled.textarea`
   padding: 0.25rem;
   padding-top: 0.5rem;
   font-size: 1.1rem;
+  background: #21222c;
+  color: #fff;
 `
 const InputConsole = ({ currentInput, setCurrentInput }) => {
   return (
     <Console>
       <Header>
-        Input:
+        Input :
       </Header>
       <TextArea
         onChange={(e) => setCurrentInput(e.target.value)}

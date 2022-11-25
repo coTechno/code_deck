@@ -4,7 +4,11 @@ import logo from '../../assets/code.png'
 import { useNavigate } from 'react-router-dom'
 const NavbarContainer = styled.div`
   height: 4.5rem;
-  background: #241f21;
+  background: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url('https://images4.alphacoders.com/114/1143395.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -55,6 +55,7 @@ const NewPlayground = () => {
       <InputWithSelect>
         <input
           type='text'
+          style={{borderRadius: '5px', padding: '0px 10px'}}
           onChange={(e) => setCardTitle(e.target.value)}
         />
         <Select
@@ -65,7 +66,7 @@ const NewPlayground = () => {
         <button onClick={() => {
           addPlayground(folderId, cardTitle, language.label)
           closeModal();
-        }}> Create Playground </button>
+        }} style={{borderRadius: '5px', cursor: 'pointer'}}> Create Playground </button>
       </InputWithSelect>
     </>
   )

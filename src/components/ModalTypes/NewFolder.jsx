@@ -17,11 +17,11 @@ const NewFolder = () => {
         </CloseButton>
       </Header>
       <Input>
-        <input type="text" onChange={(e) => setFolderTitle(e.target.value)} />
+        <input style={{borderRadius: '5px', padding: '0px 10px'}} type="text" onChange={(e) => setFolderTitle(e.target.value)} />
         <button onClick={() => {
           addFolder(folderTitle)
           closeModal()
-        }}>Create Folder</button>
+        }} style={{borderRadius: '5px', cursor: 'pointer'}}>Create Folder</button>
       </Input>
     </>
   )

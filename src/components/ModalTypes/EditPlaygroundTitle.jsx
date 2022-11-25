@@ -20,11 +20,11 @@ const EditPlaygroundTitle = () => {
         </CloseButton>
       </Header>
       <Input>
-        <input type="text" onChange={(e) => setPlaygroundTitle(e.target.value)} />
+        <input type="text" style={{borderRadius: '5px', padding: '0px 10px'}} onChange={(e) => setPlaygroundTitle(e.target.value)} />
         <button onClick={() => {
           editPlaygroundTitle(folderId, cardId, playgroundTitle)
           closeModal()
-        }}>Update Title</button>
+        }} style={{borderRadius: '5px', cursor: 'pointer'}}>Update Title</button>
       </Input>
     </>
   )
