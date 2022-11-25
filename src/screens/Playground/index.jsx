@@ -54,7 +54,7 @@ const Playground = () => {
       headers: {
         'content-type': 'application/json',
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': 'b4e5c5a05fmsh9adf6ec091523f8p165338jsncc58f31c26e1',
+        'X-RapidAPI-Key': '2c134cd07bmsh3ea4d8994b6321fp110e9cjsndeef1b360fde',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: JSON.stringify({
