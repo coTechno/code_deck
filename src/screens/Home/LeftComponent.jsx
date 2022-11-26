@@ -75,7 +75,7 @@ const LeftComponent = () => {
     return (
         <StyledLeftComponent>
             <ContentContainer>
-                <motion.div initial={{ y: -10 }} animate={{ y: 10 }} transition={{ type: 'smooth', repeatType: 'mirror', duration: 2, repeat: Infinity }}>
+                <motion.div initial={{ y: -20 }} animate={{ y: 20 }} transition={{ type: 'smooth', repeatType: 'mirror', duration: 3, repeat: Infinity }}>
                     <Logo Logo src={logo} alt=""/>
                 </motion.div>
                 <MainHeading> <span>Hacker</span> Code</MainHeading>
