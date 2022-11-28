@@ -7,4 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Play', sans-serif;
     }
+    a{
+        text-decoration: none !important;
+    }
 `

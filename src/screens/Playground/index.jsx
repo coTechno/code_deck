@@ -54,7 +54,7 @@ const Playground = () => {
       headers: {
         'content-type': 'application/json',
         'Content-Type': 'application/json',
-        'X-RapidAPI-Key': '2c134cd07bmsh3ea4d8994b6321fp110e9cjsndeef1b360fde',
+        'X-RapidAPI-Key': 'b4e5c5a05fmsh9adf6ec091523f8p165338jsncc58f31c26e1',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: JSON.stringify({
@@ -75,8 +75,7 @@ const Playground = () => {
       url: "https://judge0-ce.p.rapidapi.com/submissions/" + token,
       params: { base64_encoded: 'true', fields: '*' },
       headers: {
-        'X-RapidAPI-Key': '2c134cd07bmsh3ea4d8994b6321fp110e9cjsndeef1b360fde',
-        
+        'X-RapidAPI-Key': '3ed7a75b44mshc9e28568fe0317bp17b5b2jsn6d89943165d8',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       }
     };
@@ -130,6 +129,30 @@ const Playground = () => {
     closeModal();
   }
 
+  const getFile = (e, setState) => {
+    const input = e.target;
+    if ("files" in input && input.files.length > 0) {
+      placeFileContent(input.files[0], setState);
+    }
+  };
+
+  const placeFileContent = (file, setState) => {
+    readFileContent(file)
+      .then((content) => {
+        setState(content)
+      })
+      .catch((error) => console.log(error));
+  };
+
+  function readFileContent(file) {
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onload = (event) => resolve(event.target.result);
+      reader.onerror = (error) => reject(error);
+      reader.readAsText(file);
+    });
+  }
+
   return (
     <div>
       <Navbar />
@@ -144,11 +167,13 @@ const Playground = () => {
           playgroundId={playgroundId}
           saveCode={saveCode}
           runCode={runCode}
+          getFile={getFile}
         />
         <Consoles>
           <InputConsole
             currentInput={currentInput}
             setCurrentInput={setCurrentInput}
+            getFile={getFile}
           />
           <OutputConsole
             currentOutput={currentOutput}
@@ -159,5 +184,6 @@ const Playground = () => {
     </div>
   )
 }
+
 
 export default Playground

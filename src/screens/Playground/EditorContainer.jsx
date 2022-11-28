@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import CodeEditor from './CodeEditor'
 import styled from 'styled-components'
-import { BiEditAlt, BiImport } from 'react-icons/bi'
+import { BiEditAlt, BiImport, BiExport } from 'react-icons/bi'
 import { ModalContext } from '../../context/ModalContext'
 import Select from 'react-select';
 import { languageMap } from '../../context/PlaygroundContext'
@@ -79,12 +79,18 @@ background: #111422;
     display: none;
   }
 
-  label{
+
+  label, a{
     font-size: 1.2rem;
 
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    background: -webkit-linear-gradient(#eee,#333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}
   }
 `
 
@@ -97,7 +103,8 @@ const EditorContainer = ({
   folderId,
   playgroundId,
   saveCode,
-  runCode
+  runCode,
+  getFile,
 }) => {
 
   const { openModal } = useContext(ModalContext)
@@ -142,37 +149,12 @@ const EditorContainer = ({
     return languageOptions[0];
   })
 
-  const getFile = (e) => {
-    const input = e.target;
-
-    if ("files" in input && input.files.length > 0) {
-      placeFileContent(input.files[0]);
-    }
-  };
-
-  const placeFileContent = (file) => {
-    readFileContent(file)
-      .then((content) => {
-        setCurrentCode(content);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  function readFileContent(file) {
-    const reader = new FileReader();
-    return new Promise((resolve, reject) => {
-      reader.onload = (event) => resolve(event.target.result);
-      reader.onerror = (error) => reject(error);
-      reader.readAsText(file);
-    });
-  }
-
   return (
     <StyledEditorContainer>
       <UpperToolBar>
         <Title>
           <h3>{title}</h3>
-          <BiEditAlt style={{cursor: 'pointer'}} onClick={() => openModal({
+          <BiEditAlt onClick={() => openModal({
             show: true,
             modalType: 5,
             identifiers: {
@@ -203,13 +185,18 @@ const EditorContainer = ({
       />
       <LowerToolBar>
         <label htmlFor="codefile">
-          <input type="file" accept="." id="codefile" onChange={(e) => getFile(e)} /> <BiImport /> Import Code
+          <input type="file" accept="." id="codefile" onChange={(e) => getFile(e, setCurrentCode)} /> <BiImport /> Import Code
         </label>
 
+        
+        <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(currentCode)}`} download="code.txt">
+          <BiExport style={{color: '#a3a7bc'}}/> Export Code
+        </a>
         <Button onClick={runCode}>Run Code</Button>
       </LowerToolBar>
     </StyledEditorContainer >
   )
 }
+
 
 export default EditorContainer
