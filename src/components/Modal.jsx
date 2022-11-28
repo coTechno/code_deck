@@ -25,6 +25,7 @@ const ModalContent = styled.div`
     `
     const ModalContentLoading = styled.div`
     margin: -2rem;
+    background-color: #000;
     
 `
 
