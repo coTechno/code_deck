@@ -11,7 +11,7 @@ const InputWithSelect = styled.div`
   gap: 1rem;
   margin-top: 1.2rem;
   align-items: center;
-
+  margin-bottom: 1.5rem;
   input {
     flex-grow: 1;
     height: 2rem;

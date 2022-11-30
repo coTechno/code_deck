@@ -33,6 +33,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 `
 export const CloseButton = styled.button`
   background: transparent;
@@ -49,6 +50,7 @@ export const Input = styled.div`
   padding: 1.5rem 0;
   gap: 2rem;
   padding-bottom: 0;
+  margin-bottom: 1.5rem;
 
   input {
     flex-grow: 1;

@@ -154,13 +154,14 @@ const EditorContainer = ({
       <UpperToolBar>
         <Title>
           <h3>{title}</h3>
-          <BiEditAlt onClick={() => openModal({
+          <BiEditAlt style={{cursor: 'pointer'}}
+           onClick={() => openModal({  
             show: true,
             modalType: 5,
             identifiers: {
               folderId: folderId,
               cardId: playgroundId,
-            }
+            },
           })} />
         </Title>
         <SelectBars>
