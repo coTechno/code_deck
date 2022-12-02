@@ -19,7 +19,7 @@ const OutputConsole = ({ currentOutput }) => {
   return (
     <Console>
       <Header style={{ justifyContent: 'space-between'}}>
-        Output:
+        Output :
         <ExportOutput>
           <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(currentOutput)}`} download="output.txt">
           <BiExport style={{color: '#a3a7bc'}}/> Export Output
