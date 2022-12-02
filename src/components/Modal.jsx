@@ -23,7 +23,7 @@ const ModalContent = styled.div`
     width: 35%;
     border-radius: 10px;
     `
-    const ModalContentLoading = styled.div`
+const ModalContentLoading = styled.div`
     margin: -2rem;
     background-color: #000;
     border-radius: 15px;
@@ -83,9 +83,7 @@ const Modal = () => {
         {modalType === 3 && <NewPlaygroundAndFolder />}
         {modalType === 4 && <EditFolder />}
         {modalType === 5 && <EditPlaygroundTitle />}
-        <ModalContentLoading>
-          {modalType === 6 && <Loading />}
-        </ModalContentLoading>
+        {modalType === 6 && <ModalContentLoading><Loading /></ModalContentLoading>}
       </ModalContent>
     </ModalContainer>
   )
