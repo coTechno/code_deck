@@ -5,7 +5,7 @@ import { ModalContext } from '../../context/ModalContext'
 import { motion } from 'framer-motion';
 
 const StyledLeftComponent = styled.div`
-box-sizing: border-box;
+    box-sizing: border-box;
     position: fixed;
     top: 0;
     left: 0;
@@ -75,7 +75,7 @@ const LeftComponent = () => {
     return (
         <StyledLeftComponent>
             <ContentContainer>
-                <motion.div initial={{ y: -20 }} animate={{ y: 20 }} transition={{ type: 'smooth', repeatType: 'mirror', duration: 3, repeat: Infinity }}>
+                <motion.div initial={{ y: -20 }} animate={{ y: 20 }} transition={{ type: 'smooth', repeatType: 'mirror', duration: 2, repeat: Infinity }}>
                     <Logo Logo src={logo} alt=""/>
                 </motion.div>
                 <MainHeading> <span>Hacker</span> Code</MainHeading>

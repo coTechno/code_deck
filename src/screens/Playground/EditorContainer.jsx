@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import CodeEditor from './CodeEditor'
 import styled from 'styled-components'
-import { BiEditAlt, BiImport, BiExport } from 'react-icons/bi'
+import { BiEditAlt, BiImport, BiExport, BiFullscreen } from 'react-icons/bi'
 import { ModalContext } from '../../context/ModalContext'
 import Select from 'react-select';
 import { languageMap } from '../../context/PlaygroundContext'
@@ -44,7 +44,7 @@ const SelectBars = styled.div`
   }
 `
 const Button = styled.button`
-  padding: 0.6rem 1.5rem;
+  padding: 0.6rem 2.5rem;
   font-weight: 700;
   cursor: pointer;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -53,6 +53,7 @@ const Button = styled.button`
   color: #fff;
   border: none;
   border-radius: 4px;
+  font-size: 1rem;
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -66,6 +67,14 @@ const Button = styled.button`
   }
   
 `
+
+const CodeEditorContainer = styled.div`
+    height: calc(100% - 4rem);
+    & > div{
+        height: 100%;
+    }
+`
+
 const LowerToolBar = styled.div`
 background: #111422;
     color: #a3a7bc;
@@ -80,7 +89,7 @@ background: #111422;
   }
 
 
-  label, a{
+  label, a, .fullScreen{
     font-size: 1.2rem;
 
     display: flex;
@@ -91,8 +100,8 @@ background: #111422;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
 }
-  }
 `
+
 
 const EditorContainer = ({
   title,
@@ -105,6 +114,8 @@ const EditorContainer = ({
   saveCode,
   runCode,
   getFile,
+  isFullScreen,
+  setIsFullScreen
 }) => {
 
   const { openModal } = useContext(ModalContext)
@@ -151,21 +162,21 @@ const EditorContainer = ({
 
   return (
     <StyledEditorContainer>
-      <UpperToolBar>
+      {!isFullScreen && <UpperToolBar>
         <Title>
           <h3>{title}</h3>
-          <BiEditAlt style={{cursor: 'pointer'}}
-           onClick={() => openModal({  
-            show: true,
-            modalType: 5,
-            identifiers: {
-              folderId: folderId,
-              cardId: playgroundId,
-            },
-          })} />
+          <BiEditAlt style={{ cursor: 'pointer' }}
+            onClick={() => openModal({
+              show: true,
+              modalType: 5,
+              identifiers: {
+                folderId: folderId,
+                cardId: playgroundId,
+              },
+            })} />
         </Title>
         <SelectBars>
-          <Button onClick={saveCode}>Save code</Button>
+          <Button isFullScreen={isFullScreen} onClick={saveCode}>Save</Button>
           <Select
             options={languageOptions}
             value={language}
@@ -178,22 +189,30 @@ const EditorContainer = ({
           />
         </SelectBars>
       </UpperToolBar>
-      <CodeEditor
-        currentLanguage={currentLanguage}
-        currentTheme={currentTheme.value}
-        currentCode={currentCode}
-        setCurrentCode={setCurrentCode}
-      />
+      }
+      <CodeEditorContainer>
+        <CodeEditor
+          currentLanguage={currentLanguage}
+          currentTheme={currentTheme.value}
+          currentCode={currentCode}
+          setCurrentCode={setCurrentCode}
+        />
+      </CodeEditorContainer>
       <LowerToolBar>
+        <button className='fullScreen' onClick={() => setIsFullScreen((isFullScreen) => !isFullScreen)} style={{ border: 'none'}}>
+          
+            <BiFullscreen style={{ color: '#a3a7bc' }} /> <span  style={{backgroundColor: 'transparent'}}>{isFullScreen ? 'Minimize Screen' : 'Full Screen'}</span>
+      
+        </button>
         <label htmlFor="codefile">
           <input type="file" accept="." id="codefile" onChange={(e) => getFile(e, setCurrentCode)} /> <BiImport /> Import Code
         </label>
 
-        
+
         <a href={`data:text/plain;charset=utf-8,${encodeURIComponent(currentCode)}`} download="code.txt">
-          <BiExport style={{color: '#a3a7bc'}}/> Export Code
+          <BiExport style={{ color: '#a3a7bc' }} /> Export Code
         </a>
-        <Button onClick={runCode}>Run Code</Button>
+        <Button onClick={runCode}>Run</Button>
       </LowerToolBar>
     </StyledEditorContainer >
   )

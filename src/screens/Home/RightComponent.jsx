@@ -6,7 +6,7 @@ import logo from '../../assets/code.png'
 import { ModalContext } from '../../context/ModalContext'
 import { PlaygroundContext } from '../../context/PlaygroundContext'
 import { useNavigate } from 'react-router-dom'
-
+import { FcOpenedFolder } from 'react-icons/fc'
 const StyledRightComponent = styled.div`
     position: absolute;
     top: 0;
@@ -25,6 +25,9 @@ const Header = styled.div`
 const Heading = styled.h3`
   font-size: ${props => props.size === 'small' ? "1.25rem" : "1.75rem"};
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
   span{
     font-weight: 700;
@@ -115,7 +118,7 @@ const RightComponent = () => {
           <FolderCard key={folderId}>
             <Header>
               <Heading size="small">
-                {folder.title}
+                <FcOpenedFolder /> {folder.title}
               </Heading>
               <FolderIcons>
                 <IoTrashOutline onClick={() => deleteFolder(folderId)} />
